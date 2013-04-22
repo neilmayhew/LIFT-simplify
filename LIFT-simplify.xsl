@@ -31,11 +31,12 @@
                 <xsl:value-of select="gloss[@lang='en']/text"/>
             </gloss>
             <synonyms>
-                <xsl:value-of select="relation[@type='Synonyms']/@ref"/>
+                <xsl:for-each select="relation[@type='Synonyms']">
+                    <ref>
+                        <xsl:value-of select="@ref"/>
+                    </ref>
+                </xsl:for-each>
             </synonyms>
-            <xsl:if test="contains(relation[@type='Synonyms']/@ref, ' ')">
-                <xsl:message>Warning: multiple synonyms for <xsl:value-of select="../citation/form/text"/></xsl:message>
-            </xsl:if>
         </sense>
     </xsl:template>
 
