@@ -8,7 +8,7 @@
 
     <xsl:template match="lift">
         <database>
-            <xsl:apply-templates select="entry"/>
+            <xsl:apply-templates select="entry[descendant::sense[relation[@type='Synonyms']]]"/>
         </database>
     </xsl:template>
 
@@ -17,7 +17,7 @@
             <form>
                 <xsl:value-of select="citation/form/text"/>
             </form>
-            <xsl:apply-templates select="descendant::sense"/>
+            <xsl:apply-templates select="descendant::sense[relation[@type='Synonyms']]"/>
         </entry>
     </xsl:template>
 
